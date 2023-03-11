@@ -6,7 +6,9 @@ import NavBar from "./components/NavBar";
 import News from "./components/News";
 
 function App() {
-  const pageSize = 3;
+  const pageSize = 5;
+  const apiKey = import.meta.env.VITE_REACT_APP_NEWS_API;
+  const country = "us";
 
   const [progress, setProgress] = useState(0);
 
@@ -15,16 +17,17 @@ function App() {
       <Router>
         <NavBar />
         <LoadingBar height={3} color="#f11946" progress={progress} />
-        {/* <News setProgress={setProgress} pageSize={pageSize} country="us" category="sports" /> */}
+        {/* <News setProgress={setProgress} apiKey={apiKey} pageSize={pageSize} country={country} category="sports" /> */}
         <Routes>
           <Route
             path="/"
             element={
               <News
                 setProgress={setProgress}
+                apiKey={apiKey}
                 key="general"
                 pageSize={pageSize}
-                country="us"
+                country={country}
                 category="general"
               />
             }
@@ -35,9 +38,10 @@ function App() {
             element={
               <News
                 setProgress={setProgress}
+                apiKey={apiKey}
                 key="business"
                 pageSize={pageSize}
-                country="us"
+                country={country}
                 category="business"
               />
             }
@@ -47,9 +51,10 @@ function App() {
             element={
               <News
                 setProgress={setProgress}
+                apiKey={apiKey}
                 key="entertainment"
                 pageSize={pageSize}
-                country="us"
+                country={country}
                 category="entertainment"
               />
             }
@@ -59,9 +64,10 @@ function App() {
             element={
               <News
                 setProgress={setProgress}
+                apiKey={apiKey}
                 key="general"
                 pageSize={pageSize}
-                country="us"
+                country={country}
                 category="general"
               />
             }
@@ -71,9 +77,10 @@ function App() {
             element={
               <News
                 setProgress={setProgress}
+                apiKey={apiKey}
                 key="health"
                 pageSize={pageSize}
-                country="us"
+                country={country}
                 category="health"
               />
             }
@@ -83,9 +90,10 @@ function App() {
             element={
               <News
                 setProgress={setProgress}
+                apiKey={apiKey}
                 key="science"
                 pageSize={pageSize}
-                country="us"
+                country={country}
                 category="science"
               />
             }
@@ -95,9 +103,10 @@ function App() {
             element={
               <News
                 setProgress={setProgress}
+                apiKey={apiKey}
                 key="sports"
                 pageSize={pageSize}
-                country="us"
+                country={country}
                 category="sports"
               />
             }
@@ -107,9 +116,10 @@ function App() {
             element={
               <News
                 setProgress={setProgress}
+                apiKey={apiKey}
                 key="technology"
                 pageSize={pageSize}
-                country="us"
+                country={country}
                 category="technology"
               />
             }
