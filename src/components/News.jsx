@@ -3,6 +3,19 @@ import NewsItem from "./NewsItem";
 import { Spinner } from "./Spinner";
 
 export class News extends Component {
+  static defaultProps = {
+    country: "us",
+    pageSize: 8,
+    category: "general",
+  };
+
+  // HERE GET Error!
+  // static propTypes = {
+  //   country: PropTypes.string,
+  //   pageSize: PropTypes.number,
+  //   category: PropTypes.string,
+  // };
+
   constructor() {
     super();
     this.state = {
@@ -13,7 +26,9 @@ export class News extends Component {
   }
 
   async componentDidMount() {
-    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${
+    let url = `https://newsapi.org/v2/top-headlines?country=${
+      this.props.country
+    }&category=${this.props.category}&apiKey=${
       import.meta.env.VITE_apiKey
     }&page=1&pageSize=${this.props.pageSize}`;
 
@@ -31,9 +46,11 @@ export class News extends Component {
   handlePrevClick = async () => {
     console.log("Prev");
 
-    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${
-      import.meta.env.VITE_apiKey
-    }&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=${
+      this.props.category
+    }&apiKey=${import.meta.env.VITE_apiKey}&page=${
+      this.state.page - 1
+    }&pageSize=${this.props.pageSize}`;
 
     this.setState({ loading: true });
     let data = await fetch(url);
@@ -55,9 +72,11 @@ export class News extends Component {
         Math.ceil(this.state.totalResults / this.props.pageSize)
       )
     ) {
-      let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${
-        import.meta.env.VITE_apiKey
-      }&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
+      let url = `https://newsapi.org/v2/top-headlines?country=us&category=${
+        this.props.category
+      }&apiKey=${import.meta.env.VITE_apiKey}&page=${
+        this.state.page + 1
+      }&pageSize=${this.props.pageSize}`;
 
       this.setState({ loading: true });
       let data = await fetch(url);
@@ -74,7 +93,9 @@ export class News extends Component {
   render() {
     return (
       <div className="container my-3">
-        <h2 className="text-center">NewsPI - Top Headlines</h2>
+        <h2 className="text-center" style={{ margin: "35px 0px" }}>
+          NewsPI - Top Headlines
+        </h2>
         {this.state.loading && <Spinner />}
         <div className="row">
           {!this.state.loading &&

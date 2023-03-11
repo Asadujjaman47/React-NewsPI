@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <News pageSize={5} />
+      <News pageSize={5} country="us" category="sports" />
     </div>
   );
 }
