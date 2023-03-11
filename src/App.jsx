@@ -1,24 +1,23 @@
-import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import News from "./components/News";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const pageSize = 5;
 
   return (
     <div className="App">
       <Router>
         <NavBar />
-        {/* <News pageSize={5} country="us" category="sports" /> */}
+        {/* <News pageSize={pageSize} country="us" category="sports" /> */}
         <Routes>
           <Route
             path="/"
             element={
               <News
                 key="general"
-                pageSize={5}
+                pageSize={pageSize}
                 country="us"
                 category="general"
               />
@@ -30,7 +29,7 @@ function App() {
             element={
               <News
                 key="business"
-                pageSize={5}
+                pageSize={pageSize}
                 country="us"
                 category="business"
               />
@@ -41,7 +40,7 @@ function App() {
             element={
               <News
                 key="entertainment"
-                pageSize={5}
+                pageSize={pageSize}
                 country="us"
                 category="entertainment"
               />
@@ -52,7 +51,7 @@ function App() {
             element={
               <News
                 key="general"
-                pageSize={5}
+                pageSize={pageSize}
                 country="us"
                 category="general"
               />
@@ -61,7 +60,12 @@ function App() {
           <Route
             path="/health"
             element={
-              <News key="health" pageSize={5} country="us" category="health" />
+              <News
+                key="health"
+                pageSize={pageSize}
+                country="us"
+                category="health"
+              />
             }
           />
           <Route
@@ -69,7 +73,7 @@ function App() {
             element={
               <News
                 key="science"
-                pageSize={5}
+                pageSize={pageSize}
                 country="us"
                 category="science"
               />
@@ -78,7 +82,12 @@ function App() {
           <Route
             path="/sports"
             element={
-              <News key="sports" pageSize={5} country="us" category="sports" />
+              <News
+                key="sports"
+                pageSize={pageSize}
+                country="us"
+                category="sports"
+              />
             }
           />
           <Route
@@ -86,7 +95,7 @@ function App() {
             element={
               <News
                 key="technology"
-                pageSize={5}
+                pageSize={pageSize}
                 country="us"
                 category="technology"
               />
