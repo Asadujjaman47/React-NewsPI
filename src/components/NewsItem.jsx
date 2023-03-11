@@ -2,13 +2,24 @@ import React, { Component } from "react";
 
 export class NewsItem extends Component {
   render() {
-    let { title, description, imageUrl, newsUrl, author, date } = this.props;
+    let { title, description, imageUrl, newsUrl, author, date, source } =
+      this.props;
     let defaultImage =
       "https://st4.depositphotos.com/14953852/22772/v/450/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg";
 
     return (
       <div className="my-3">
         <div className="card">
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              position: "absolute",
+              right: "0",
+            }}
+          >
+            <span className="badge rounded-pill bg-danger">{source}</span>
+          </div>
           <img
             src={imageUrl ? imageUrl : defaultImage}
             className="card-img-top"
@@ -23,7 +34,12 @@ export class NewsItem extends Component {
                 {new Date(date).toGMTString()}
               </small>
             </p>
-            <a href={newsUrl} target="_blank" className="btn btn-sm btn-dark">
+            <a
+              rel="noreferrer"
+              href={newsUrl}
+              target="_blank"
+              className="btn btn-sm btn-dark"
+            >
               Read More
             </a>
           </div>
