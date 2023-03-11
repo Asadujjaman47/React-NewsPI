@@ -49,7 +49,11 @@ const News = (props) => {
   };
 
   const fetchMoreData = async () => {
-    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${
+      props.country
+    }&category=${props.category}&apiKey=${props.apiKey}&page=${
+      page + 1
+    }&pageSize=${props.pageSize}`;
 
     setPage(page + 1);
 
@@ -62,9 +66,15 @@ const News = (props) => {
 
   return (
     <>
-      <h2 className="text-center" style={{ margin: "35px 0px" }}>
+      <h1
+        className="text-center"
+        style={{
+          margin: "35px 0px",
+          marginTop: "90px",
+        }}
+      >
         NewsPI - Top {capitalizeFirstLetter(props.category)}
-      </h2>
+      </h1>
       {loading && <Spinner />}
       <InfiniteScroll
         dataLength={articles.length}
